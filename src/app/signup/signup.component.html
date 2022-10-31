@@ -1,0 +1,79 @@
+<h2>Sign-Up</h2>
+<form [formGroup]="myForm" (submit)="onSubmit()">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input
+    type="text"
+    name="firstName"
+    formControlName="firstName">
+    <div *ngIf="firstName?.errors?.['required']">
+      *This field is required.*
+    </div>
+    <div *ngIf="firstName?.errors?.['pattern']">
+      *Please enter a valid First Name.*
+    </div>
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input
+    type="text"
+    name="lastName"
+    formControlName="lastName">
+    <div *ngIf="lastName?.errors?.['required']">
+      *This field is required.*
+    </div>
+    <div *ngIf="lastName?.errors?.['pattern']">
+      *Please enter a valid Last Name.*
+    </div>
+  </div>
+  <div>
+    <label for="address">Address:</label>
+    <input
+    type="text"
+    name="address"
+    formControlName="address">
+    <div *ngIf="address?.errors?.['required']">
+      *This field is required.*
+    </div>
+  </div>
+  <div>
+    <label for="email">Email Address:</label>
+    <input
+    type="text"
+    name="email"
+    formControlName="email">
+    <div *ngIf="email?.errors?.['required']">
+      *This field is required.*
+    </div>
+    <div *ngIf="email?.errors?.['pattern']">
+      *Please enter a valid Email Address.*
+    </div>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input
+    type="password"
+    name="password"
+    formControlName="password"
+    maxlength="15">
+    <div *ngIf="password?.errors?.['required']">
+      *This field is required.*
+    </div>
+    <div>*Maximum length of 15 characters.*</div>
+  </div>
+  <div>
+    <label for="repeatPass">Repeat Password:</label>
+    <input
+    type="password"
+    name="repeatPass"
+    formControlName="repeatPass">
+    <div *ngIf="repeatPass?.errors?.['required']">
+      *This field is required.*
+    </div>
+    <!--<div *ngIf="repeatPass?.hasError('mismatch')">
+      *Password and Repeat Password should match.*
+    </div>-->
+  </div>
+  <input type="submit" value="Submit" [disabled]="myForm.invalid" (click)="onPWChange()">
+</form>
+<p>{{myForm.value|json}}</p>
